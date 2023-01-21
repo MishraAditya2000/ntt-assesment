@@ -1,3 +1,8 @@
+<?php
+session_start();
+require('backend/alert.php');
+require('backend/profile.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,41 +38,41 @@ include './includes/nav.inc.php';
     <div class="order">
       <div class="row">
         <div class="col-lg-8 col-md-12 col-sm-12">
-          <form>
+          <form method="POST" action="./backend/servicerequest.php">
             <fieldset>
               <div class="row">
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputEmail1" class="form-label mt-4">Full Name</label>
-                    <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
-                      placeholder="e.g. John Doe">
+                    <input type="text" class="form-control" name="user-name" id="exampleInputName" aria-describedby="emailHelp"
+                      placeholder="e.g. John Doe" value="<?php echo $user_row['user_name']?>">
                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="form-label mt-4">Contact</label>
-                    <input type="number" class="form-control" id="exampleInputcontact" placeholder="e.g. +91 995004844">
+                    <input type="number" class="form-control" name="user-mob" id="exampleInputcontact" placeholder="e.g. +91 995004844" value="<?php echo $user_row['user_mob']?>" required>
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1" class="form-label mt-4">Address</label>
                 <!-- <input type="number" class="form-control" id="exampleInputAddress" placeholder="+91 995004844"> -->
-                <textarea name="address" id="address" cols="78" rows="2" placeholder="Address"
-                  aria-placeholder="Address" class="form-control"></textarea>
+                <textarea name="address" name="user-address" id="address" cols="78" rows="2" placeholder="Address"
+                  aria-placeholder="Address" class="form-control" required><?php echo $user_row['user_address']?></textarea>
               </div>
               <div class="row">
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="form-label mt-4">Schedule Pick-Up</label>
-                    <input type="date" class="form-control" id="exampleInputSchedule">
+                    <input type="date" class="form-control" name="date"  id="exampleInputSchedule" required>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
-                    <label for="exampleInputPassword1" class="form-label mt-4">Pick-Up Time</label>
-                    <input type="time" class="form-control" id="exampleInputScheduleTime">
+                    <label for="exampleInputPassword1" class="form-label mt-4">Pick-Up Time(9.00AM -12.00PM & 3.00 PM-6.00PM)</label>
+                    <input type="time" class="form-control" min="09:00" max="18:00" name="time" id="exampleInputScheduleTime" required>
                   </div>
                 </div>
               </div>
@@ -75,25 +80,25 @@ include './includes/nav.inc.php';
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="form-label mt-4">Topware(T-Shirts,Shirts,Top)</label>
-                    <input type="number" class="form-control" id="exampleInputTopware" placeholder="Enter Quantity">
+                    <input type="number" class="form-control" name="topware" id="exampleInputTopware" placeholder="Enter Quantity" required>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="form-label mt-4">Bottomware(Lower,Jeans,Leggins)</label>
-                    <input type="number" class="form-control" id="exampleInputBottomware" placeholder="Enter Quantity">
+                    <input type="number" class="form-control" name="bottomware" id="exampleInputBottomware" placeholder="Enter Quantity" required>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="form-label mt-4">Woolen</label>
-                    <input type="number" class="form-control" id="exampleInputWoolen" placeholder="Enter Quantity">
+                    <input type="number" class="form-control" name="woolen" id="exampleInputWoolen" placeholder="Enter Quantity" required>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="form-label mt-4">Other</label>
-                    <input type="number" class="form-control" id="exampleInputOther" placeholder="Enter Quantity">
+                    <input type="number" class="form-control" name="other" id="exampleInputOther" placeholder="Enter Quantity" require>
                   </div>
                 </div>
               </div>
@@ -102,15 +107,40 @@ include './includes/nav.inc.php';
             <!-- <div class="form-group">
               <button type="button" class="btn btn-primary btn-lg" style="margin-top:18px ;">Place Order</button>
             </div> -->
-            <a href="" class="btn btn-primary btn-md my-3">Place Order</a>
+            <button type="submit" class="btn btn-primary btn-md my-3" name="order">Place Order</button>
           </form>
         </div>
         <div class="col-lg-4 col-md-12 col-sm-12">
           <div class="card text-white bg-primary mb-3">
-            <div class="card-header">Order Summary</div>
+            <div class="card-header">Price List</b></div>
             <div class="card-body">
-              <h6 class="">Total Items:</h6>
-              <h6 class="">Total Price:</h6>
+            <table>
+      <thead>
+        <tr>
+          <th scope="col"><b>Clothing Type</b></th>
+          <th scope="col">Service Charge(per-item)</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bottom Ware Laundry</td>
+          <td>₹22</td>
+        </tr>
+        <tr>
+          <td>Top Ware Laundry</td>
+          <td>₹12</td>
+        </tr>
+        <tr>
+          <td>Woolen Laundry</td>
+          <td>₹20</td>
+        </tr>
+        <tr>
+          <td>Other Laundry</td>
+          <td>According to Apparel</td>
+        </tr>
+      </tbody>
+    </table>
             </div>
           </div>
         </div>

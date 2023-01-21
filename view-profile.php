@@ -1,3 +1,9 @@
+<?php
+include('backend/alert.php');
+require('backend/profile.php');
+include('backend/orderlist.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,26 +31,29 @@ include './includes/nav.inc.php';
           </div>
           <div class="col-lg-8 col-sm-8 col-xs-8">
             <div class="col">
-              <h4 class="h4">Jhon Doe</h4>
-              <p class=" "></p>
+              <h4 class="h4"></h4>
+              <p class=" "><?php echo $user_row['user_name'];?></p>
             </div>
             <div class="col">
-              <h4 class="h4">9556000428</h4>
-              <p class=" "></p>
+              <h4 class="h4"></h4>
+              <p class=" "><?php echo $user_row['user_mob'];?></p>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <h6 class="h6">Email:</h6>
-            <p class=" ">jhonisahoe@gmail.com</p>
+            <p class=" "><?php echo $user_row['user-email'];?></p>
           </div>
           <div class="col-12">
             <h6 class="h6">Address:</h6>
             <p class=" ">
-              House No-06, Floor-2nd,Vilaa Zilla, Xyz Square,767017
+             <?php echo $user_row['user_address'];?> 
             </p>
           </div>
+          <a class="btn btn-primary" data-bs-toggle="offcanvas" href="./change-password.php" role="button" aria-controls="offcanvasExample">
+          Change Password
+          </a>
         </div>
 
 
@@ -61,13 +70,9 @@ include './includes/nav.inc.php';
             </div>
             <div class="card-body text-center">
               <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                   <td>Total Order</td><br>
-                  <td>6</td>
-                </div>
-                <div class="col-6">
-                  <td>Delivered</td><br>
-                  <td>4</td>
+                  <td><?php echo mysqli_num_rows($order_count);?></td>
                 </div>
               </div>
               <table>
@@ -82,33 +87,35 @@ include './includes/nav.inc.php';
             </div>
 
           </div>
-          <div class="card">
+          <?php while($order_row=mysqli_fetch_assoc($result_order)){
+            ?>          
+          <div class="card" style="margin-bottom: 12px;">
             <div class="card-body">
               <div class="row">
                 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <h6 class="h6">Order ID:</h6>
-                  <p class=" ">Jhon Hoe</p>
+                  <p class=" "><?php echo $order_row['id'];?></p>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <h6 class="h6">Status:</h6>
-                  <p class=" ">Accepted</p>
+                  <p class=" "><?php echo $order_row['status'];?></p>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <h6 class="h6">Date:</h6>
-                  <p class=" ">15-01-23</p>
+                  <p class=" "><?php echo $order_row['date'];?></p>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <h6 class="h6">Name:</h6>
-                  <p class=" ">Jhon Hoe</p>
+                  <p class=" "><?php echo $order_row['name'];?></p>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <h6 class="h6">Mobile No:</h6>
-                  <p class=" ">9556000428</p>
+                  <p class=" "><?php echo $order_row['mob'];?></p>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <h6 class="h6">Address:</h6>
                   <p class=" ">
-                    House No-06, Floor-2nd,Vilaa Zilla, Xyz Square,767017
+                  <?php echo $order_row['address'];?>
                   </p>
                 </div>
               </div>
@@ -116,23 +123,25 @@ include './includes/nav.inc.php';
               <div class="row mt-3">
                 <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                   <h6 class="h6">Topware:</h6>
-                  <p class=" ">6</p>
+                  <p class=" "><?php echo $order_row['item_topware'];?></p>
                 </div>
                 <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                   <h6 class="h6">Bottomware:</h6>
-                  <p class=" ">3</p>
+                  <p class=" "><?php echo $order_row['item_bottomware'];?></p>
                 </div>
                 <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                   <h6 class="h6">Woolen:</h6>
-                  <p class=" ">0</p>
+                  <p class=" "><?php echo $order_row['item_woolen'];?></p>
                 </div>
                 <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                   <h6 class="h6">Other:</h6>
-                  <p class=" ">0</p>
+                  <p class=" "><?php echo $order_row['item_other'];?></p>
                 </div>
               </div>
             </div>
           </div>
+          <?php
+        }?>
 
 
 

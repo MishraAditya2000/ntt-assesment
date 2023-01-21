@@ -1,5 +1,38 @@
 <?php
 include './backend/loginverfy.php';
+include './backend/orderlist.php';
+if (isset($_GET["name"])) {
+  $message = $_GET["name"];
+  echo "<script>alert('$message');</script>";
+
+}
+unset($_GET['name']);
+$new_request=[];
+$accepted=[];
+$processing=[];
+$finished=[];
+  if(mysqli_num_rows($order_count)>0){
+    while($row=mysqli_fetch_assoc($result_order)){
+      if($row['status']=="Pending"){
+        $new_request[]=$row['date'];
+      }
+      elseif ($row['status']=="Accepted") {
+       $accepted[]=$row['date'];
+      }
+      elseif($row['status']=="Processing"){
+        $processing[]=$row['date'];
+      }
+      elseif ($row['status']=="Finished") {
+        $finished[]=$row['status'];
+      }
+    }
+    $total=count($new_request)+count($processing)+count($finished)+count($accepted);
+  }
+
+else{
+$total=0;
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +67,9 @@ include './includes/nav.inc.php';
             <h6 class="card-title text-white">New Request</h6>
           </div>
           <div class="card-body">
-            <small class="card-text">Last Order:06-01-23</small><br>
-            <small><a href="#" class="card-link">View Details</a></small>
+
+            <small class="card-text">Total New Request:<?php echo count($new_request);?></small><br>
+            <small>Total Order:<?php echo $total;?></small>
           </div>
         </div>
       </div>
@@ -45,8 +79,9 @@ include './includes/nav.inc.php';
             <h6 class="card-title text-white">Accepted</h6>
           </div>
           <div class="card-body">
-            <small class="card-text">Accepted On:15-01-23</small><br>
-            <small><a href="#" class="card-link">View Details</a></small>
+            <small class="card-text">Total Order Accepted:<?php echo count($accepted);?></small><br>
+            <small>Total Order:<?php echo $total;?></small>
+
           </div>
         </div>
       </div>
@@ -56,8 +91,9 @@ include './includes/nav.inc.php';
             <h6 class="card-title text-white">In Process</h6>
           </div>
           <div class="card-body">
-            <small class="card-text">Processing Started:10-01-23</small><br>
-            <small><a href="#" class="card-link">View Details</a></small>
+            <small class="card-text">In Processing :<?php echo count($processing);?></small><br>
+            <small>Total Order:<?php echo $total;?></small>
+
           </div>
         </div>
       </div>
@@ -67,8 +103,9 @@ include './includes/nav.inc.php';
             <h6 class="card-title text-white">Finished</h6>
           </div>
           <div class="card-body">
-            <small class="card-text text-small">Last Delivered On: 12-01-23</small><br>
-            <small><a href="#" class="card-link">View Details</a></small>
+            <small class="card-text text-small">Order Fulfilled:<?php echo count($finished);?></small><br>
+            <small>Total Order:<?php echo $total;?></small>
+
           </div>
         </div>
       </div>
@@ -103,7 +140,7 @@ include './includes/nav.inc.php';
         <tr>
           <th scope="row">4</th>
           <td>Other Laundry</td>
-          <td>₹30</td>
+          <td>According to Apparel</td>
         </tr>
       </tbody>
     </table>

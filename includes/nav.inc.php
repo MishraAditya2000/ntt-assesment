@@ -25,7 +25,7 @@
             <a class="dropdown-item" href="./view-profile.php">View Profile</a>
             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profileEditModal">Edit Profile</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Log Out</a>
+            <a class="dropdown-item" href="./backend/logout.php">Log Out</a>
           </div>
         </li>
       </ul>
@@ -40,46 +40,53 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="modal-form" method="POST" action="../ntt-assesment/backend/update-profile.php">
           <fieldset>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label for="exampleInputEmail1" class="form-label mt-4">Name</label>
-                  <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+                  <input type="text" class="form-control" name="user-name" id="exampleInputName" aria-describedby="emailHelp"
                     placeholder="Enter Name">
 
                 </div>
               </div>
               <div class="col">
+                
                 <div class="form-group">
-                  <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
-                  <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
-                    placeholder="Enter Email">
+                  <label for="exampleInputEmail1" class="form-label mt-4">Mobile No:</label>
+                  <input type="text" class="form-control" name="user-mob" id="exampleInputEmail" aria-describedby="emailHelp"
+                  placeholder="955600047">
+                  
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1" class="form-label mt-4">Mobile No:</label>
-              <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
-                placeholder="955600047">
-
+              <label for="exampleInputEmail1" class="form-label mt-4">Address</label>
+              <textarea type="text" class="form-control" name="address" id="exampleInputEmail" aria-describedby="emailHelp"
+                placeholder="Enter Address"></textarea>
             </div>
-
-
           </fieldset>
-
-
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 12px;">Close</button>
+          <button type="submit" form="modal-form" name="update" class="btn btn-primary" style="margin-top:12px">Save changes</button>
+        </form>
       </div>
     </div>
 
-
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
-    </div>
-    </form>
   </div>
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script>
+// this will get the full URL at the address bar
+var url = window.location.href;
+// passes on every "a" tag
+$(".nav-item a").each(function() {
+  // checks if its the same on the address bar
+  if (url == (this.href)) {
+    console.log(url);
+    $(this).closest(".nav-link").addClass("active");
+  }
+});
+</script>
