@@ -14,6 +14,7 @@ include('./backend/alert.php')
 </head>
 <body >
     <div class="content">
+        <h4 class="h4">Welcome to LMS-Laundry Management System</h4>
         <div class="card text-white bg-primary mb-3" style="max-width: 35rem;">
             <div class="card-header text-center"><h3 class="h3">Log In</h3></div>
             <div class="card-body">

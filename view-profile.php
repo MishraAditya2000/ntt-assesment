@@ -101,8 +101,8 @@ include './includes/nav.inc.php';
                   <p class=" "><?php echo $order_row['status'];?></p>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                  <h6 class="h6">Date:</h6>
-                  <p class=" "><?php echo $order_row['date'];?></p>
+                  <h6 class="h6">Pick Up Scheduled on:</h6>
+                  <p class=" "><?php echo $order_row['date']." ".$order_row['time'];?></p>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <h6 class="h6">Name:</h6>

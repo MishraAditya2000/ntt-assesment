@@ -47,7 +47,7 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1" class="form-label mt-4">Name</label>
                   <input type="text" class="form-control" name="user-name" id="exampleInputName" aria-describedby="emailHelp"
-                    placeholder="Enter Name">
+                    placeholder="Enter Name" required>
 
                 </div>
               </div>
@@ -56,7 +56,7 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1" class="form-label mt-4">Mobile No:</label>
                   <input type="text" class="form-control" name="user-mob" id="exampleInputEmail" aria-describedby="emailHelp"
-                  placeholder="955600047">
+                  placeholder="955600047" required>
                   
                 </div>
               </div>
@@ -64,7 +64,7 @@
             <div class="form-group">
               <label for="exampleInputEmail1" class="form-label mt-4">Address</label>
               <textarea type="text" class="form-control" name="address" id="exampleInputEmail" aria-describedby="emailHelp"
-                placeholder="Enter Address"></textarea>
+                placeholder="Enter Address" required></textarea>
             </div>
           </fieldset>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 12px;">Close</button>

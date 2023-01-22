@@ -21,7 +21,7 @@ if(isset($_POST['order'])){
     echo $order_query."<br>";
     $execute_query=mysqli_query($con,$order_query);
     if($execute_query){
-        header('location:../view-profile.php?name=Order Successful,We will pick up on'.$schdeule_date);
+        header('location:../view-profile.php?name=We confirm your order,We will pick up on '.$schdeule_date);
     }
     else{
         header('location:../laundry-request.php?name=Error Occured,Try Again');

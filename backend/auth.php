@@ -10,7 +10,8 @@ if(isset($_POST['login'])){
     $s_res=mysqli_query($con,$s);
 
      if($s_row=mysqli_fetch_assoc($s_res)){
-        if($user_password==$s_row['user_password']){
+        
+        if(password_verify($user_password,$s_row['user_password'])){
             
             $_SESSION["user"]=$s_row['user-email'];
             $_SESSION["loggedin"]=1;

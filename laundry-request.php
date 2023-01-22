@@ -80,25 +80,25 @@ include './includes/nav.inc.php';
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="form-label mt-4">Topware(T-Shirts,Shirts,Top)</label>
-                    <input type="number" class="form-control" name="topware" id="exampleInputTopware" placeholder="Enter Quantity" required>
+                    <input type="number" class="form-control" min="0" name="topware" id="exampleInputTopware" placeholder="Enter Quantity" required>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="form-label mt-4">Bottomware(Lower,Jeans,Leggins)</label>
-                    <input type="number" class="form-control" name="bottomware" id="exampleInputBottomware" placeholder="Enter Quantity" required>
+                    <input type="number" class="form-control" min="0" name="bottomware" id="exampleInputBottomware" placeholder="Enter Quantity" required>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="form-label mt-4">Woolen</label>
-                    <input type="number" class="form-control" name="woolen" id="exampleInputWoolen" placeholder="Enter Quantity" required>
+                    <input type="number" class="form-control" min="0" name="woolen" id="exampleInputWoolen" placeholder="Enter Quantity" required>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="form-label mt-4">Other</label>
-                    <input type="number" class="form-control" name="other" id="exampleInputOther" placeholder="Enter Quantity" require>
+                    <input type="number" class="form-control" min="0" name="other" id="exampleInputOther" placeholder="Enter Quantity" require>
                   </div>
                 </div>
               </div>

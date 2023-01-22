@@ -18,8 +18,9 @@ if(isset($_POST['signup'])){
     }
 
   else{
+    $hash_ed1=password_hash($password,PASSWORD_DEFAULT);
     $insertuser="INSERT INTO `user`(`user_name`, `user-email`, `user_mob`, `user_password`, `user_address`) VALUES 
-                ('$name','$email','$mob','$password','$address')";
+                ('$name','$email','$mob','$hash_ed1','$address')";
         $query=mysqli_query($con, $insertuser);
         if($query){
             $_SESSION["user"]=$email;
