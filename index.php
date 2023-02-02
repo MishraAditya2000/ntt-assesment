@@ -33,6 +33,8 @@ else{
 $total=0;
 
 }
+$query="SELECT * FROM pricing";
+$result=mysqli_query($con,$query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,26 +124,33 @@ include './includes/nav.inc.php';
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Bottom Ware Laundry</td>
-          <td>₹22</td>
-        </tr>
-        <tr>
+      <?php 
+        while($row=mysqli_fetch_assoc($result)){
+            ?>
+
+            <th scope="row"><?php echo $row['slno'];?></th>
+            <td><?php echo $row['laundry_type'];?></td>
+            <td><?php echo $row['currency'].$row['price'];?></td>
+            </tr>
+
+            <?php
+        }
+        ?>
+        <!-- <tr>
           <th scope="row">2</th>
           <td>Top Ware Laundry</td>
-          <td>₹12</td>
+          <td>$8.50</td>
         </tr>
         <tr>
           <th scope="row">3</th>
           <td>Woolen Laundry</td>
-          <td>₹20</td>
+          <td>$13.50</td>
         </tr>
         <tr>
           <th scope="row">4</th>
           <td>Other Laundry</td>
           <td>According to Apparel</td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
   </div>

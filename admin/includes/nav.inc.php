@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.php">Admin-Laundry Management</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./index.php">Dashboard
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./laundry-order.php">Laundry Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./pricing-list.php">Price List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./backend/logout.php">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- <div class="modal fade" id="profileEditModal" tabindex="-1" aria-labelledby="profileEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="profileEditModalLabel">Edit Profile</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="modal-form" method="POST" action="../ntt-assesment/backend/update-profile.php">
+          <fieldset>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="exampleInputEmail1" class="form-label mt-4">Name</label>
+                  <input type="text" class="form-control" name="user-name" id="exampleInputName" aria-describedby="emailHelp"
+                    placeholder="Enter Name" required>
+
+                </div>
+              </div>
+              <div class="col">
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1" class="form-label mt-4">Mobile No:</label>
+                  <input type="text" class="form-control" name="user-mob" id="exampleInputEmail" aria-describedby="emailHelp"
+                  placeholder="955600047" required>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="form-label mt-4">Address</label>
+              <textarea type="text" class="form-control" name="address" id="exampleInputEmail" aria-describedby="emailHelp"
+                placeholder="Enter Address" required></textarea>
+            </div>
+          </fieldset>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 12px;">Close</button>
+          <button type="submit" form="modal-form" name="update" class="btn btn-primary" style="margin-top:12px">Save changes</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div> -->
+</div>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+  </script>
+<script>
+// this will get the full URL at the address bar
+var url = window.location.href;
+// passes on every "a" tag
+$(".nav-item a").each(function() {
+  // checks if its the same on the address bar
+  if (url == (this.href)) {
+    console.log(url);
+    $(this).closest(".nav-link").addClass("active");
+  }
+});
+</script>
