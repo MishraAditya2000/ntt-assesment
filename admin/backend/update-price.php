@@ -12,7 +12,11 @@ if(isset($_POST['update'])){
 
 $result=mysqli_multi_query($con,$query);
 if($result){
-    header ('location:../pricing-list.php');
+    header ('location:../pricing-list.php?name=Pricing Updated Successfully');
+}
+else{
+    header ('location:../pricing-list.php?name=Can not update Pricing, Try Again');
+    
 }
 
 }

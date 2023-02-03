@@ -1,5 +1,6 @@
 <?php
-include'../admin/backend/connection.php';
+include './backend/alert.php';
+include '../admin/backend/connection.php';
 $query="SELECT * FROM pricing";
 $result=mysqli_query($con,$query);
 ?>

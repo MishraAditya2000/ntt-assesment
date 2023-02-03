@@ -8,7 +8,7 @@ if(isset($_POST['update'])){
     echo $query;
     $result=mysqli_query($con,$query);
     if($result){
-        header('location:../laundry-order.php');
+        header('location:../laundry-order.php?name=Status Updated Successfully');
     }
     else{
         header('location:../order-details.php?id=$id');

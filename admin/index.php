@@ -1,12 +1,12 @@
 <?php 
 include "./backend/loginverfy.php";
 include "./backend/connection.php";
-// if (isset($_GET["name"])) {
-//   $message = $_GET["name"];
-//   echo "<script>alert('$message');</script>";
+if (isset($_GET["name"])) {
+  $message = $_GET["name"];
+  echo "<script>alert('$message');</script>";
 
-// }
-// unset($_GET['name']);
+}
+unset($_GET['name']);
 $query="SELECT * FROM orders  ORDER BY slno DESC";
 $order_count=mysqli_query($con,$query);
 $result_order=mysqli_query($con,$query);

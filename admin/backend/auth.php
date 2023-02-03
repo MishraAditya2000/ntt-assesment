@@ -23,7 +23,7 @@ if(isset($_POST['login'])){
     }
 
     else{
-        header ('location:../login.php?name=Credentials Does Not Matcch Any Account');   
+        header ('location:../login.php?name=Credentials Does Not Match Any Account');   
     }
  } 
 ?>

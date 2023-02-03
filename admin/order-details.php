@@ -95,7 +95,7 @@ if (isset($_GET["id"])) {
                                         <option value="Delivered">Delivered</option>
                                     </select>
                             </div>
-                            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="margin-top: 8px;">
                             <button class="btn btn-outline-primary" name="update" type="submit">Update Status</button>
                             </div>
                             <!-- <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
